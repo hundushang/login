@@ -1,0 +1,31 @@
+<html>
+<title><%= title %></title>
+<body>
+用户名: <input type="text" name="username">  <br>
+
+密码: <input type="password" name="password">
+<input id="btn-login" type="button" value="注册">
+<script src="http://www.ruyihezi.com/js/jquery.js"></script>
+<script>
+$(function(){
+	$("#btn-login").bind('click', function(){
+		$.ajax({
+			url:'http://localhost:8081/register',
+			type: 'post',
+			data: {username: $('[name="username"]').val(),password:$('[name="password"]').val()},
+			dataType: 'html',
+			success: function(data){
+				if(data==1){
+					//注册成功跳到登录页
+					window.location.href='./login';
+				}else{
+					console.log('注册失败！');
+				}
+			}
+		})
+	})
+});
+	
+</script>
+</body>
+</html>

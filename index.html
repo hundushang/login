@@ -1,0 +1,30 @@
+<html>
+<title><%= title %></title>
+<body>
+用户名: <input type="text" name="username">  <br>
+
+密码: <input type="password" name="password">
+<input id="btn-login" type="button" value="登录">
+<script src="http://www.ruyihezi.com/js/jquery.js"></script>
+<script>
+$(function(){
+	$("#btn-login").bind('click', function(){
+		$.ajax({
+			url:'http://localhost:8081/checklogin',
+			type: 'post',
+			data: {username: $('[name="username"]').val(),password:$('[name="password"]').val()},
+			dataType: 'html',
+			success: function(data){
+				if(data==1){
+					window.location.href='./main';
+				}else{
+					console.log('登录失败！')
+				}
+			}
+		})
+	})
+});
+	
+</script>
+</body>
+</html>

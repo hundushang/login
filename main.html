@@ -1,0 +1,28 @@
+<html>
+<title><%= main %></title>
+<body>
+main
+<input id="btn-exit" type="button" value="退出登录">
+<script src="http://www.ruyihezi.com/js/jquery.js"></script>
+<script>
+$(function(){
+	$("#btn-exit").bind('click', function(){
+		$.ajax({
+			url:'http://localhost:8081/exit',
+			type: 'post',
+			data: {},
+			dataType: 'html',
+			success: function(data){
+				if(data==1){
+					window.location.href='./login';
+				}else{
+					console.log('退出登录失败！')
+				}
+			}
+		})
+	})
+});
+	
+</script>
+</body>
+</html>
